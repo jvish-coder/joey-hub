@@ -1,0 +1,50 @@
+{
+  "name": "Joey Ong",
+  "role": "Business Growth Partner · Event Strategist · Host",
+  "positioning": "Helping businesses grow, brands come to life, and people lead with confidence.",
+  "photo": "joey.jpg",
+  "marquee": ["Events", "Speaking", "Business Growth", "Hosting", "Community", "Becoming"],
+  "whatsapp_number": "60103938943",
+  "whatsapp_greeting": "Hi Joey, I found you through your page — ",
+  "email": "joeyee.jo@gmail.com",
+  "cards": [
+    {
+      "show": true,
+      "emoji": "🚀",
+      "title": "Scale Your Business",
+      "blurb": "Courses, coaching and community for young, growth-focused business leaders — through Owners Circle Academy.",
+      "cta": "Explore Business Growth",
+      "url": "https://linktr.ee/ownerscircleacademy"
+    },
+    {
+      "show": true,
+      "emoji": "🎪",
+      "title": "Bring Your Event to Life",
+      "blurb": "From roadshows to any event — we build experiences your audiences walk right into.",
+      "cta": "Plan Your Event",
+      "url": "https://jvish.my/"
+    },
+    {
+      "show": true,
+      "emoji": "🎤",
+      "title": "Engage & Inspire",
+      "blurb": "Host, emcee or trainer — Joey brings the energy and clarity that carries a room, from a training room to the main stage.",
+      "cta": "See Joey on Stage",
+      "url": "https://canva.link/joeyongvoice"
+    }
+  ],
+  "follow_heading": "Follow the Journey",
+  "follow_blurb": "The real journey — business, growth, and the lessons in between.",
+  "socials": [
+    { "show": true,  "id": "instagram", "label": "Instagram", "url": "https://www.instagram.com/byjoeyong/" },
+    { "show": true,  "id": "linkedin",  "label": "LinkedIn",  "url": "https://www.linkedin.com/in/ongjoey/" },
+    { "show": false, "id": "facebook",  "label": "Facebook",  "url": "" },
+    { "show": false, "id": "tiktok",    "label": "TikTok",    "url": "" },
+    { "show": false, "id": "youtube",   "label": "YouTube",   "url": "" }
+  ],
+  "contact_heading": "Let’s talk",
+  "contact_blurb": "Have something in mind? The fastest way to reach Joey is right here.",
+  "trust_show": false,
+  "trust_line": "",
+  "footer_tagline": "Building experiences that grow businesses — and the people behind them."
+}
