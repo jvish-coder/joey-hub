@@ -18,12 +18,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
 <!-- ============================================================ -->
-<!--   ✏️  EDIT EVERYTHING HERE — this is the only block you touch  -->
-<!--   Change any link, button label, or text between the quotes.   -->
-<!--   Set show:false to hide a section. Save the file. Done.        -->
+<!--   Your content lives in content.json and is edited in your CMS.  -->
+<!--   The block below is only a safety fallback — no need to touch.  -->
+<!--                                                                  -->
 <!-- ============================================================ -->
 <script>
-const CONTENT = {
+/* ⬇ FALLBACK ONLY. The live site loads its content from content.json
+   (which you edit in your CMS). This copy is used only if content.json
+   ever fails to load — so the page can never break. */
+const FALLBACK = {
   // ---- HERO ----
   name: "Joey Ong",
   role: "Business Growth Partner · Event Strategist · Host",
@@ -227,8 +230,7 @@ const TINTS = ["#B5533A", "#C0873B", "#C17A66"]; // clay, gold, rose
 const esc = (s)=>String(s).replace(/[&<>"]/g,(m)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
 function waLink(wa){ return `https://wa.me/${wa.number}?text=${encodeURIComponent(wa.greeting||"")}`; }
 
-(function render(){
-  const c = CONTENT;
+function render(c){
   const wa = waLink(c.whatsapp);
   const socials = c.follow.socials.filter(s=>s.show && s.url);
   const cards = c.cards.filter(x=>x.show);
@@ -296,6 +298,32 @@ function waLink(wa){ return `https://wa.me/${wa.number}?text=${encodeURIComponen
       </footer>
     </div>`;
   document.title = `${c.name} — ${c.role}`;
+}
+
+/* Load content.json (what your CMS edits); fall back to the inline copy if it can't load. */
+function mapData(j){
+  return {
+    name:j.name, role:j.role, positioning:j.positioning, photo:j.photo,
+    marquee:j.marquee||[],
+    whatsapp:{ number:j.whatsapp_number, greeting:j.whatsapp_greeting },
+    email:j.email,
+    cards:j.cards||[],
+    follow:{ show:true, heading:j.follow_heading, blurb:j.follow_blurb, socials:j.socials||[] },
+    contact:{ show:true, heading:j.contact_heading, blurb:j.contact_blurb },
+    trust:{ show:!!j.trust_show, line:j.trust_line||"" },
+    footer:{ tagline:j.footer_tagline }
+  };
+}
+(async function(){
+  let data;
+  try{
+    const r = await fetch('content.json', { cache:'no-store' });
+    if(!r.ok) throw new Error('content.json not found');
+    data = mapData(await r.json());
+  }catch(e){
+    data = FALLBACK;
+  }
+  render(data);
 })();
 </script>
 </body>
