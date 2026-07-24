@@ -1,0 +1,45 @@
+media:
+  input: .
+  output: /
+
+content:
+  - name: site
+    label: Joey's Page
+    path: content.json
+    type: file
+    fields:
+      - { name: name, label: Your name, type: string }
+      - { name: role, label: Title line (under the photo), type: string }
+      - { name: positioning, label: Positioning sentence, type: text }
+      - { name: photo, label: Profile photo, type: image }
+      - { name: marquee, label: Moving ticker words, type: string, list: true }
+      - { name: whatsapp_number, label: "WhatsApp number (country code, no +)", type: string }
+      - { name: whatsapp_greeting, label: WhatsApp pre-filled message, type: text }
+      - { name: email, label: Email address, type: string }
+      - name: cards
+        label: Main cards
+        type: object
+        list: true
+        fields:
+          - { name: show, label: Show this card?, type: boolean }
+          - { name: emoji, label: Emoji, type: string }
+          - { name: title, label: Card title, type: string }
+          - { name: blurb, label: Card description, type: text }
+          - { name: cta, label: Button text, type: string }
+          - { name: url, label: Button link (URL), type: string }
+      - { name: follow_heading, label: "Follow section — heading", type: string }
+      - { name: follow_blurb, label: "Follow section — subtext", type: text }
+      - name: socials
+        label: Social links
+        type: object
+        list: true
+        fields:
+          - { name: show, label: Show this one?, type: boolean }
+          - { name: id, label: "Platform (instagram / linkedin / facebook / tiktok / youtube)", type: string }
+          - { name: label, label: Label, type: string }
+          - { name: url, label: Link (URL), type: string }
+      - { name: contact_heading, label: "Contact section — heading", type: string }
+      - { name: contact_blurb, label: "Contact section — subtext", type: text }
+      - { name: trust_show, label: Show the trust line?, type: boolean }
+      - { name: trust_line, label: "Trust line (e.g. 150+ events · 8 years)", type: string }
+      - { name: footer_tagline, label: Footer tagline, type: text }
