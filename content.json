@@ -3,10 +3,17 @@
   "role": "Business Growth Partner · Event Strategist · Host",
   "positioning": "Helping businesses grow, brands come to life, and people lead with confidence.",
   "photo": "joey.jpg",
-  "marquee": ["Events", "Speaking", "Business Growth", "Hosting", "Community", "Becoming"],
+  "marquee": [
+    "Events",
+    "Speaking",
+    "Business Growth",
+    "Hosting",
+    "Community",
+    "Becoming"
+  ],
   "whatsapp_number": "60103938943",
   "whatsapp_greeting": "Hi Joey, I found you through your page — ",
-  "email": "joeyee.jo@gmail.com",
+  "email": "jvish.event@gmail.com",
   "cards": [
     {
       "show": true,
@@ -36,15 +43,37 @@
   "follow_heading": "Follow the Journey",
   "follow_blurb": "The real journey — business, growth, and the lessons in between.",
   "socials": [
-    { "show": true,  "id": "instagram", "label": "Instagram", "url": "https://www.instagram.com/byjoeyong/" },
-    { "show": true,  "id": "linkedin",  "label": "LinkedIn",  "url": "https://www.linkedin.com/in/ongjoey/" },
-    { "show": false, "id": "facebook",  "label": "Facebook",  "url": "" },
-    { "show": false, "id": "tiktok",    "label": "TikTok",    "url": "" },
-    { "show": false, "id": "youtube",   "label": "YouTube",   "url": "" }
+    {
+      "show": true,
+      "id": "instagram",
+      "label": "Instagram",
+      "url": "https://www.instagram.com/byjoeyong/"
+    },
+    {
+      "show": true,
+      "id": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/ongjoey/"
+    },
+    {
+      "show": true,
+      "id": "facebook",
+      "label": "Facebook",
+      "url": "https://www.facebook.com/joeyOae"
+    },
+    {
+      "show": false,
+      "id": "tiktok",
+      "label": "TikTok"
+    },
+    {
+      "show": false,
+      "id": "youtube",
+      "label": "YouTube"
+    }
   ],
   "contact_heading": "Let’s talk",
   "contact_blurb": "Have something in mind? The fastest way to reach Joey is right here.",
   "trust_show": false,
-  "trust_line": "",
   "footer_tagline": "Building experiences that grow businesses — and the people behind them."
 }
