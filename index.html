@@ -121,27 +121,38 @@ const FALLBACK = {
   a{text-decoration:none;color:inherit}
   main{position:relative;z-index:1;max-width:500px;margin:0 auto;padding:0 0 56px}
 
-  /* ---------- HERO — bold colour block ---------- */
-  .hero{position:relative;overflow:hidden;padding:42px 22px 76px;text-align:center;color:#F8EFE4;
-    background:radial-gradient(120% 90% at 50% 0%, #C56742 0%, #B5533A 42%, #8E4230 100%)}
-  .hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:36px;background:var(--cream);
-    border-radius:50% 50% 0 0/100% 100% 0 0}
+  /* ---------- HERO — full-bleed magazine cover ---------- */
+  .hero{position:relative;overflow:hidden;min-height:86vh;display:flex;flex-direction:column;
+    justify-content:flex-end;padding:0 24px 62px;text-align:center;color:#FBF3E9}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% 18%;
+    filter:saturate(1.06) contrast(1.03) brightness(.98) sepia(.12) hue-rotate(-8deg);z-index:0}
+  .hero-overlay{position:absolute;inset:0;z-index:0;background:
+    linear-gradient(180deg,
+      rgba(30,16,11,.34) 0%,
+      rgba(30,16,11,0) 22%,
+      rgba(122,54,40,.06) 44%,
+      rgba(142,66,48,.62) 72%,
+      rgba(126,58,42,.94) 92%,
+      #7C3A2A 100%)}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:34px;background:var(--cream);
+    border-radius:50% 50% 0 0/100% 100% 0 0;z-index:2}
+  .hero-content{position:relative;z-index:1}
   .badge{display:inline-flex;gap:8px;align-items:center;padding:7px 15px;border-radius:9999px;
-    background:rgba(248,239,228,.16);font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-    position:relative;z-index:1}
-  .photo-wrap{margin:20px auto 0;width:136px;height:136px;border-radius:9999px;padding:5px;
-    background:rgba(248,239,228,.24);box-shadow:0 16px 40px rgba(0,0,0,.25);position:relative;z-index:1}
-  .photo-wrap img{width:100%;height:100%;border-radius:9999px;object-fit:cover;object-position:60% 26%}
-  .name{margin-top:16px;font-size:58px;line-height:.9;letter-spacing:-.03em;font-weight:800;position:relative;z-index:1}
-  @media(min-width:560px){.name{font-size:66px}}
-  .tagline{margin:14px auto 0;max-width:22rem;font-size:15.5px;line-height:1.5;color:rgba(248,239,228,.88);position:relative;z-index:1}
-  .socials{margin-top:18px;display:flex;justify-content:center;gap:9px;position:relative;z-index:1}
-  .s-btn{display:flex;width:42px;height:42px;align-items:center;justify-content:center;border-radius:50%;
-    background:rgba(248,239,228,.16);color:#F8EFE4;transition:.2s}
-  .s-btn:hover{background:#F8EFE4;color:var(--clay);transform:translateY(-3px)}
-  .cta{margin-top:18px;display:inline-flex;align-items:center;gap:9px;border-radius:9999px;padding:14px 28px;
-    font-size:14.5px;font-weight:700;color:var(--clay);background:#F8EFE4;position:relative;z-index:1;
-    box-shadow:0 12px 28px rgba(0,0,0,.22);transition:.2s}
+    background:rgba(251,243,233,.14);backdrop-filter:blur(4px);border:1px solid rgba(251,243,233,.18);
+    font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+  .name{margin-top:14px;font-size:66px;line-height:.9;letter-spacing:-.03em;font-weight:800;
+    text-shadow:0 3px 30px rgba(20,10,6,.5)}
+  @media(min-width:560px){.name{font-size:74px}}
+  .tagline{margin:14px auto 0;max-width:22rem;font-size:15.5px;line-height:1.5;color:rgba(251,243,233,.92);
+    text-shadow:0 1px 14px rgba(20,10,6,.55)}
+  .socials{margin-top:20px;display:flex;justify-content:center;gap:9px}
+  .s-btn{display:flex;width:44px;height:44px;align-items:center;justify-content:center;border-radius:50%;
+    background:rgba(251,243,233,.16);backdrop-filter:blur(4px);border:1px solid rgba(251,243,233,.2);
+    color:#FBF3E9;transition:.2s}
+  .s-btn:hover{background:#FBF3E9;color:var(--clay);transform:translateY(-3px)}
+  .cta{margin-top:20px;display:inline-flex;align-items:center;gap:9px;border-radius:9999px;padding:15px 30px;
+    font-size:14.5px;font-weight:700;color:var(--clay);background:#FBF3E9;
+    box-shadow:0 14px 34px rgba(20,10,6,.4);transition:.2s}
   .cta:hover{transform:translateY(-3px)}
 
   /* ---------- MARQUEE ---------- */
@@ -274,12 +285,15 @@ function render(c){
 
   document.getElementById("app").innerHTML = `
     <header class="hero">
-      <span class="badge">${esc(c.role)}</span>
-      <div class="photo-wrap"><img src="${esc(c.photo)}" alt="${esc(c.name)}"></div>
-      <h1 class="name disp">${esc(c.name)}</h1>
-      <p class="tagline">${esc(c.positioning)}</p>
-      ${socialBtns ? `<div class="socials">${socialBtns}</div>` : ""}
-      <a class="cta" href="${wa}" target="_blank" rel="noopener noreferrer">${ICONS.whatsapp} Message Joey</a>
+      <img class="hero-bg" src="${esc(c.photo)}" alt="${esc(c.name)}">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="badge">${esc(c.role)}</span>
+        <h1 class="name disp">${esc(c.name)}</h1>
+        <p class="tagline">${esc(c.positioning)}</p>
+        ${socialBtns ? `<div class="socials">${socialBtns}</div>` : ""}
+        <a class="cta" href="${wa}" target="_blank" rel="noopener noreferrer">${ICONS.whatsapp} Message Joey</a>
+      </div>
     </header>
 
     <div class="marquee"><div class="marquee-track">${marqueeItems}</div></div>
